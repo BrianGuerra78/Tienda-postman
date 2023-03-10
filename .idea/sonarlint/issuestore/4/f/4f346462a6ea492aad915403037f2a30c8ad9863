@@ -1,0 +1,6 @@
+
+r	java:S116"WRename this field "id_direccion" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É Ù}8­ê›¤Ä0
+r	java:S116"VRename this field "no_interior" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼¢©í8»¥óÃ0
+w	java:S116"VRename this field "no_exterior" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±‰²äıÿÿÿÿ8»¥óÃ0
+y	java:S116"XRename this field "codigo_postal" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Š§âøÿÿÿÿ8»¥óÃ0
+t	java:S116"XRename this field "fk_id_cliente" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûá­8¼¥óÃ0

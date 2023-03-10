@@ -1,0 +1,4 @@
+com\capgemini\academia\service\impl\ApplicationServiceImpl.class
+com\capgemini\academia\controller\ApplicationController.class
+com\capgemini\academia\service\ApplicationService.class
+com\capgemini\academia\handler\ErrorHandler.class

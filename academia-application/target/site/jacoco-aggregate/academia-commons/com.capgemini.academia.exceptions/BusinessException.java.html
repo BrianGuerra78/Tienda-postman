@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>BusinessException.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">academia-application</a> &gt; <a href="../index.html" class="el_bundle">academia-commons</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.academia.exceptions</a> &gt; <span class="el_source">BusinessException.java</span></div><h1>BusinessException.java</h1><pre class="source lang-java linenums">package com.capgemini.academia.exceptions;
+
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.capgemini.academia.commons.Messages;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * This exception should be thrown in all cases when a resource cannot be found
+ *
+ */
+@Getter
+<span class="nc" id="L18">@Setter</span>
+public class BusinessException extends RuntimeException {
+
+<span class="nc" id="L21">	private static final Logger LOG = LogManager.getLogger(BusinessException.class);</span>
+
+        /** Serial Number. */
+        private static final long serialVersionUID = 1L;
+
+        /** C&amp;oacute;digo de error. */
+<span class="nc" id="L27">        private int code;</span>
+
+<span class="nc" id="L29">        private int httpCode;</span>
+
+        /** Descripci&amp;oacute;n de error. */
+<span class="nc" id="L32">        private String description;</span>
+
+<span class="nc" id="L34">        private String menssage;</span>
+
+
+
+        /**
+         * Constructor de la clase que incluye mensaje de error.
+         */
+<span class="nc" id="L41">        public BusinessException() {</span>
+<span class="nc" id="L42">        }</span>
+
+        /**
+         * Constructor de la clase que incluye mensaje de error.
+         *
+         * @param message
+         *            the message
+         */
+        public BusinessException(String message) {
+<span class="nc" id="L51">            super(message);</span>
+
+<span class="nc" id="L53">        }</span>
+
+        /**
+         * Constructor de la clase que incluye mensaje de error.
+         *
+         * @param code
+         *            the code
+         */
+<span class="nc" id="L61">        public BusinessException(Integer code) {</span>
+            
+<span class="nc" id="L63">            this.description = Messages.getMessage(code);</span>
+<span class="nc" id="L64">            this.code = code;</span>
+<span class="nc" id="L65">            this.menssage = Messages.getMessage(code);</span>
+<span class="nc" id="L66">            super.initCause(new Throwable(Messages.getMessage(code)));// NOSONAR</span>
+<span class="nc" id="L67">        }</span>
+
+<span class="nc" id="L69">    public BusinessException(Integer code, Integer httpStatus) {</span>
+<span class="nc" id="L70">        this.description = Messages.getMessage(code);</span>
+<span class="nc" id="L71">        this.code = code;</span>
+<span class="nc" id="L72">        this.httpCode=httpStatus;</span>
+<span class="nc" id="L73">        super.initCause(new Throwable(Messages.getMessage(code)));// NOSONAR</span>
+<span class="nc" id="L74">    }</span>
+
+        /**
+         * Constructor de la clase que incluye mensaje de error.
+         *
+         * @param code
+         *            the code
+         * @param params
+         *            the params
+         * @return the baja california exception
+         */
+        public static &lt;T extends BusinessException&gt; T createExceptionParams(Class&lt;T&gt; clazz, Integer code, Object... params) {
+<span class="nc" id="L86">            BusinessException exception=null;</span>
+            try {
+<span class="nc" id="L88">                exception = clazz.newInstance();</span>
+
+<span class="nc" id="L90">                String mensajeError = MessageFormat.format(Messages.getMessage(code), params);</span>
+<span class="nc" id="L91">                exception.description = mensajeError;</span>
+<span class="nc" id="L92">                exception.code = code;</span>
+<span class="nc" id="L93">                exception.initCause(new Throwable(mensajeError));</span>
+<span class="nc" id="L94">                LOG.debug(&quot; BusinessException  code: {} mensaje: {}&quot; ,code, mensajeError);</span>
+<span class="nc" id="L95">            }catch (MissingResourceException e) {</span>
+<span class="nc" id="L96">                LOG.error(&quot;WARNING: No se encontro mensaje de error {}&quot;,e);</span>
+<span class="nc" id="L97">            }catch (InstantiationException e) {</span>
+<span class="nc" id="L98">                LOG.error(&quot;Error al iniciarlizar el objeto &quot;,e);</span>
+<span class="nc" id="L99">            } catch (IllegalAccessException e) {</span>
+<span class="nc" id="L100">                LOG.error(&quot;Error al accesar al objeto &quot;,e);</span>
+<span class="nc" id="L101">            }</span>
+
+<span class="nc" id="L103">            return  (T) exception;</span>
+        }
+
+        /**
+         * Constructor de la clase que incluye mensaje de error y causa del error.
+         *
+         * @param message
+         *            the message
+         * @param cause
+         *            the cause
+         */
+<span class="nc" id="L114">        public BusinessException(Integer code, Throwable cause) {</span>
+<span class="nc" id="L115">            String mensajeError = getMessage(code);</span>
+<span class="nc" id="L116">            this.description = mensajeError;</span>
+<span class="nc" id="L117">            this.code = code;</span>
+<span class="nc" id="L118">            initCause(new Throwable(mensajeError));</span>
+<span class="nc" id="L119">        }</span>
+
+
+        /**
+         * Gets the message.
+         *
+         * @param code the code
+         * @param params the params
+         * @return the message
+         */
+        public String getMessage(Integer code, Object...params){
+<span class="nc" id="L130">            return MessageFormat.format(Messages.getMessage(code), params);</span>
+        }
+
+        /**
+         * Constructor de la clase que incluye mensaje de error y causa del error.
+         *
+         * @param message
+         *            the message
+         * @param cause
+         *            the cause
+         */
+        public BusinessException(String message, Throwable cause) {
+<span class="nc" id="L142">            super(message, cause);</span>
+<span class="nc" id="L143">        }</span>
+
+        /**
+         * Constructor de la clase que incluye la causa del error.
+         *
+         * @param cause
+         *            the cause
+         */
+        public BusinessException(Throwable cause) {
+<span class="nc" id="L152">            super(cause);</span>
+<span class="nc" id="L153">        }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

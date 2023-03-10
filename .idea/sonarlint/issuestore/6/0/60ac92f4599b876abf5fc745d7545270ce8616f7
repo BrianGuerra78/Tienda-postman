@@ -1,0 +1,5 @@
+
+p	java:S116"TRename this field "id_compra" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µëò8ÃÊ¢ÑÃ0
+x	java:S116"WRename this field "fecha_compra" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ‹êòüÿÿÿÿ8ÜÆ£şÃ0
+t	java:S116""XRename this field "fk_id_cliente" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş Òê8–šæ£Å0
+{	java:S116)"ZRename this field "fk_id_direccion" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áõıÙûÿÿÿÿ8±ç£Å0

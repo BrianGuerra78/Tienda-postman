@@ -1,0 +1,5 @@
+
+€	java:S116"_Rename this field "id_compras_productos" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®«ñşÿÿÿÿ8Ğ–…ÅÅ0
+w	java:S116"VRename this field "no_articulo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ³ÂŸÿÿÿÿÿ8ÏŒ¡óÃ0
+u	java:S116"YRename this field "fk_id_producto" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚¹¤·8ÏŒ¡óÃ0
+s	java:S116"WRename this field "fk_id_compra" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š€×Ë8ĞŒ¡óÃ0

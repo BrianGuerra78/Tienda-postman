@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="0ec8dadb-d8db-4d2e-a898-8e3c6cfabe28" name="academia_tienda" url="jdbc:oracle:thin:@//database-1.c4qbfoflnenh.us-east-2.rds.amazonaws.com/academia" driverClass="oracle.jdbc.OracleDriver" />
+    </data-sources>
+  </component>
+</project>

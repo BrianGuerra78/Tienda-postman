@@ -1,0 +1,5 @@
+com\capgemini\academia\model\ModuleEntity$ModuleEntityBuilder.class
+com\capgemini\academia\model\ApplicationItem.class
+com\capgemini\academia\model\ModuleEntity.class
+com\capgemini\academia\repository\impl\BaseRepositoryImpl.class
+com\capgemini\academia\model\ApplicationItem$ApplicationItemBuilder.class

@@ -1,0 +1,9 @@
+com\capgemini\academia\dto\ApplicationEntry$ApplicationEntryBuilder.class
+com\capgemini\academia\exceptions\ResourceNotFoundException.class
+com\capgemini\academia\commons\Messages.class
+com\capgemini\academia\dto\Module$ModuleBuilder.class
+com\capgemini\academia\dto\CustomErrorResponse.class
+com\capgemini\academia\exceptions\NotAllowedOperationException.class
+com\capgemini\academia\dto\ApplicationEntry.class
+com\capgemini\academia\dto\Module.class
+com\capgemini\academia\exceptions\BusinessException.class

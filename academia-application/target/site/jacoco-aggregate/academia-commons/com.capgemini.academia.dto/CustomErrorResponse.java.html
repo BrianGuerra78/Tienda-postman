@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>CustomErrorResponse.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">academia-application</a> &gt; <a href="../index.html" class="el_bundle">academia-commons</a> &gt; <a href="index.source.html" class="el_package">com.capgemini.academia.dto</a> &gt; <span class="el_source">CustomErrorResponse.java</span></div><h1>CustomErrorResponse.java</h1><pre class="source lang-java linenums">package com.capgemini.academia.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import java.io.Serializable;
+import java.util.Date;
+
+import org.springframework.http.HttpStatus;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+/**
+ * Necessary for proper Swagger documentation.
+ *
+ */
+@SuppressWarnings(&quot;unused&quot;)
+<span class="nc" id="L17">@AllArgsConstructor</span>
+@Getter
+public class CustomErrorResponse implements Serializable {
+
+    private static final long serialVersionUID = -7755563009111273632L;
+
+<span class="nc" id="L23">    private int httpStatusCode; // 200, 201, 400, 500</span>
+<span class="nc" id="L24">    private HttpStatus httpStatus;</span>
+<span class="nc" id="L25">    private String message;</span>
+<span class="nc" id="L26">    private int errorCode;</span>
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = &quot;MM-dd-yyyy hh:mm:ss&quot;)
+<span class="nc" id="L29">    private Date timeStamp;</span>
+    
+<span class="nc" id="L31">    public CustomErrorResponse(int httpStatusCode, HttpStatus httpStatus, String message) {</span>
+<span class="nc" id="L32">        this.timeStamp = new Date();</span>
+<span class="nc" id="L33">        this.httpStatusCode = httpStatusCode;</span>
+<span class="nc" id="L34">        this.httpStatus = httpStatus;</span>
+<span class="nc" id="L35">        this.message = message;</span>
+<span class="nc" id="L36">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
